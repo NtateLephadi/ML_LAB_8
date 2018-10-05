@@ -7,12 +7,13 @@
 class state{
     private:
       std::vector<char> actions;
-      std::map<state, int> reward;
-      int value;
+      std::map<int, int> reward;
+      int value, number;
     public:
-      state(std::vector<char> v, std::map<state, int> map);
+      state(std::vector<char> v, std::map<int, int> map);
       ~state();
       void set_value(int value);
-      int get_reward(state s);
+      int get_reward(int);
+      int get_number();
 };
 #endif

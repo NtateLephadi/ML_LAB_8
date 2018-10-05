@@ -1,14 +1,18 @@
 #include <vector>
 #include <map>
+#include "state.h"
 
-class state{
-    private:
-      std::vector<char> actions;
-      std::map<state, int> reward;
-      int value;
-    public:
-      state(std::vector<char> v, std::map<state, int> map);
-      ~state();
-      void set_value(int value);
-      int get_reward(state s);
-};
+state::state(std::vector<char> actions, std::map<int, int> reward){
+  this->actions=actions;
+  this->reward=reward;
+}
+state::~state(){}
+void set_value(int value){
+
+}
+int state::get_reward(int n){
+  return this->reward[n];
+}
+int state::get_number(){
+  return this->number;
+}
