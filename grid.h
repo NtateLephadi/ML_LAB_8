@@ -9,7 +9,10 @@ class state{
     private:
       std::vector<std::vector<state>> grid;
     public:
-      grid(int height, int width);
+      grid();
       ~grid();
+      int fill_grid(state s);
+      int next_value(state s, int action);
+      void fill_grid(state s);
 };
 #endif

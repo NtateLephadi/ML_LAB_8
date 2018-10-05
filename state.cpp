@@ -5,6 +5,7 @@
 state::state(std::vector<char> actions, std::map<int, int> reward){
   this->actions=actions;
   this->reward=reward;
+  this->value=0;
 }
 state::~state(){}
 void set_value(int value){
@@ -15,4 +16,8 @@ int state::get_reward(int n){
 }
 int state::get_number(){
   return this->number;
+}
+
+int state::get_value(){
+  return this->value;
 }
