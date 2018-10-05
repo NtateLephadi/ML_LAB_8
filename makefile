@@ -1,2 +1,2 @@
 state:
-	g++ state.cpp -c -o state -std=c++11
+	g++ grid.cpp state.cpp -c -o grid -std=c++11
