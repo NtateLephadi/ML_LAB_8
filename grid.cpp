@@ -6,7 +6,7 @@ grid::~grid();
 
 int grid::next_value(state s, int a){
     state next;
-    for (auto s1: grid){
+    for (state s1: this->world){
       if (s1.get_number()==s.get_number()) {
         /* code */
         next = s1;

@@ -2,10 +2,10 @@
 #include <map>
 #include "state.h"
 
-state::state(std::vector<char> actions, std::map<int, int> reward){
+state::state(std::vector<char> actions, std::map<int, int> reward, int value){
   this->actions=actions;
   this->reward=reward;
-  this->value=0;
+  this->value=value;
 }
 state::~state(){}
 void set_value(int value){

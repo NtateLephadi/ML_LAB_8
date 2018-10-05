@@ -10,7 +10,7 @@ class state{
       std::map<int, int> reward;
       int value, number;
     public:
-      state(std::vector<char> v, std::map<int, int> map, int value);
+      state(std::vector<char> v, std::map<int, int> m, int value);
       ~state();
       void set_value(int value);
       int get_reward(int);

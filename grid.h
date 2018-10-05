@@ -5,9 +5,9 @@
 #ifndef GRID_H
 #define GRID_H
 
-class state{
+class grid{
     private:
-      std::vector<std::vector<state>> grid;
+      std::vector<std::vector<state>> world;
     public:
       grid();
       ~grid();
