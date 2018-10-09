@@ -11,8 +11,8 @@ class grid{
     public:
       grid();
       ~grid();
-      int fill_grid(state s);
-      int next_value(state s, int action);
-      void fill_grid(state s);
+      int fill_grid(state);
+      int next_value(state, int);
+      void fill_grid(state);
 };
 #endif
