@@ -11,6 +11,8 @@ class grid{
     public:
       grid();
       ~grid();
+      grid(std::vector<std::vector<state>>);
+      void to_string();
       int next_value(state);
       void fill_grid(state);
 };
