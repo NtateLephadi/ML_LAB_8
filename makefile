@@ -1,14 +1,17 @@
 CFLAGS = -O
 CC = g++
 
-volimage: volimage.o
-	$(CC) $(CFLAGS) -o volimage volimage.o --std=c++11
+driver: grid.o driver.cpp
+	$(CC) $(CFLAGS) -o driver driver.cpp --std=c++11
 
-volimage.o: volimage.h volimage.cpp
-	$(CC) $(CFLAGS) -c volimage.cpp --std=c++11
+grid.o: state.o grid.h grid.cpp
+	$(CC) $(CFLAGS) -c grid.cpp --std=c++11
+
+state.o: state.h state.cpp
+	$(CC) $(CFLAGS) -c state.cpp --std=c++11
 
 run:
-	./volimage
+	./driver
 
 clean:
 	rm -f core *.o
