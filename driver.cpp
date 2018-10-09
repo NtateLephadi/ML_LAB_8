@@ -1,13 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include "grid.h"
+#include "state.h"
 
 int main(int argc, char const *argv[]) {
   /* code */
-  std::vector<char> actions({'u','d','l','r'});
-  std::map<int, int> reward({{1,1},{2,1}});
-  int value = 0;
-  int number= 1;
-  
+  state s1({'r','d'},{},0,1,0.8,1.0);
+  s1.to_string();
   return 0;
 }

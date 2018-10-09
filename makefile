@@ -1,8 +1,11 @@
 CFLAGS = -O
 CC = g++
 
-driver: grid.o driver.cpp
-	$(CC) $(CFLAGS) -o driver driver.cpp --std=c++11
+driver: driver.o
+	$(CC) $(CFLAGS) -o driver driver.o grid.o state.o --std=c++11
+
+driver.o: grid.o driver.cpp
+	$(CC) $(CFLAGS) -c driver.cpp --std=c++11
 
 grid.o: state.o grid.h grid.cpp
 	$(CC) $(CFLAGS) -c grid.cpp --std=c++11
