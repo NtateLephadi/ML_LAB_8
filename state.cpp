@@ -8,7 +8,7 @@ state::state(std::vector<char> actions, std::map<int, int> reward, int value){
   this->value=value;
 }
 state::~state(){}
-void set_value(int value){
+void state::set_value(int value){
   this->value=value;
 }
 int state::get_reward(int n){
