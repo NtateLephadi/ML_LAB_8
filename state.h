@@ -23,6 +23,7 @@ class state{
       int get_reward(int);
       int get_state_number();
       int get_value();
+      std::vector<char> get_action();
       void to_string();
 };
 #endif

@@ -14,3 +14,16 @@ void grid::to_string(){
     }
   }
 }
+
+state grid::next_state(state s, char action){
+  for (size_t column = 0; column < this->world.size(); column++) {
+    /* code */
+    for (size_t row = 0; row < this->world[column]; row++) {
+      /* code */
+      if (this->world[column][row]==s) {
+        /* code */
+        return this->world[column][row];
+      }
+    }
+  }
+}

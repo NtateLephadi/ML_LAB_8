@@ -13,7 +13,7 @@ class grid{
       ~grid();
       grid(std::vector<std::vector<state>>);
       void to_string();
-      int next_value(state);
+      state next_state(state, char);
       void fill_grid(state);
 };
 #endif

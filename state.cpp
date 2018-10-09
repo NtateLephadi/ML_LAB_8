@@ -36,6 +36,10 @@ int state::get_state_number(){
 int state::get_value(){
   return this->value;
 }
+std::vector<char> state::get_action(){
+  return this->actions;
+}
+
 void state::to_string(){
   for (size_t i = 0; i < this->actions.size(); i++) {
     /* code */
