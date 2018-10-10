@@ -9,20 +9,20 @@ class state{
     private:
       std::vector<char> actions;
       std::map<int, int> reward;
-      int value, state_number;
-      float discount, probability;
+      int state_number;
+      float discount, probability, value;
     public:
       state(std::vector<char>, std::map<int, int>, int, int, float, float);
       state();
       ~state();
-      void set_value(int);
+      void set_value(float);
       void set_discount(float);
       void set_probability(float);
       float get_discount();
       float get_probability();
-      int get_reward(int);
+      std::map<int, int> get_reward();
       int get_state_number();
-      int get_value();
+      float get_value();
       std::vector<char> get_action();
       void to_string();
 };

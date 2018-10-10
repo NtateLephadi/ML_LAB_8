@@ -12,7 +12,7 @@ state::state(std::vector<char> actions, std::map<int, int> reward, int value, in
 }
 state::state(){}
 state::~state(){}
-void state::set_value(int value){
+void state::set_value(float value){
   this->value=value;
 }
 void state::set_discount(float discount){
@@ -27,13 +27,13 @@ float state::get_discount(){
 float state::get_probability(){
   return this->probability;
 }
-int state::get_reward(int n){
-  return this->reward[n];
+std::map<int, int> state::get_reward(){
+  return this->reward;
 }
 int state::get_state_number(){
   return this->state_number;
 }
-int state::get_value(){
+float state::get_value(){
   return this->value;
 }
 std::vector<char> state::get_action(){
