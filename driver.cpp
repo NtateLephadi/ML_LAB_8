@@ -16,6 +16,7 @@ int main(int argc, char const *argv[]) {
   grid g({{s1,s2,s3},{s4,s5,s6}});
 
   g.fill_grid();
+  g.optimal_policy(s1);
 
   return 0;
 }

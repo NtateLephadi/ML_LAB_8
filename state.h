@@ -18,6 +18,7 @@ class state{
       void set_value(float);
       void set_discount(float);
       void set_probability(float);
+      void set_state_number(int);
       float get_discount();
       float get_probability();
       std::map<int, int> get_reward();

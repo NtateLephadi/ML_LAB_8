@@ -15,6 +15,9 @@ state::~state(){}
 void state::set_value(float value){
   this->value=value;
 }
+void state::set_state_number(int state_number){
+  this->state_number=state_number;
+}
 void state::set_discount(float discount){
   this->discount=discount;
 }

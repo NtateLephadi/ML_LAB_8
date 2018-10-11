@@ -18,6 +18,7 @@ class grid{
       bool converge(grid);
       void write_optimal();
       std::vector<state> optimal_policy(state);
-
+      state optimal_state(std::vector<state>);
+      void write_optimal_policy(std::vector<state>);
 };
 #endif
