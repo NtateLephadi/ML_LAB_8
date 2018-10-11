@@ -68,7 +68,7 @@ void grid::fill_grid() {
               break;
               case 'r':{
                 next_state=this->world[column][row+1];
-                this->world[column][row], std::ofstream::outet_value(std::max(this->world[column][row].get_value(), this->world[column][row].get_reward()[next_state.get_state_number()]+this->world[column][row].get_discount()*next_state.get_value()));
+                this->world[column][row].set_value(std::max(this->world[column][row].get_value(), this->world[column][row].get_reward()[next_state.get_state_number()]+this->world[column][row].get_discount()*next_state.get_value()));
               }
               break;
               default:{
@@ -83,12 +83,12 @@ void grid::fill_grid() {
   }
 }
 
-void write_optimal(std::string filename) {
+void grid::write_optimal(std::string filename) {
   /* code */
   std::ofstream ofs ("ml_lab_8");
-  for (size_t column = 0; column < this->world.size(); column++) {
+  for (size_t column = 0; column < 2; column++) {
     /* code */
-    for (size_t row = 0; row < this->world[column].size(); row++) {
+    for (size_t row = 0; row < 3; row++) {
       /* code */
       ofs << this->world[column][row].get_value() << " | ";
     }
