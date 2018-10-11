@@ -1,6 +1,7 @@
 #include <vector>
 #include <map>
 #include "state.h"
+#include <string>
 
 #ifndef GRID_H
 #define GRID_H
@@ -15,5 +16,6 @@ class grid{
       void to_string();
       void fill_grid();
       bool converge(grid);
+      void write_optimal(std::string);
 };
 #endif

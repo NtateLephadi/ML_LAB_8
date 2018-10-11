@@ -16,7 +16,6 @@ int main(int argc, char const *argv[]) {
   grid g({{s1,s2,s3},{s4,s5,s6}});
 
   g.fill_grid();
-  g.to_string();
 
   return 0;
 }
