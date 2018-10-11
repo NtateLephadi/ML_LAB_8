@@ -36,51 +36,51 @@ bool grid::converge(grid lhs){
 
 void grid::fill_grid() {
   /* code */
-  grid g;
+  grid g, temp;
   state s;
+  s.set_value(1.0);
   g.world={{s,s,s},{s,s,s}};
-  while (!this->converge(g)) {
+  temp.world=g.world;
+  while (this->converge(g)==0) {
     /* code */
-    auto temp=this->world;
-    for (size_t i = 0; i < 3; i++) {
+    for (size_t column = 0; column < this->world.size(); column++) {
       /* code */
-      for (size_t column = 0; column < this->world.size(); column++) {
+      for (size_t row = 0; row < this->world[column].size(); row++) {
         /* code */
-        for (size_t row = 0; row < this->world[column].size(); row++) {
-          /* code */
-          state next_state;
-          for(char a: this->world[column][row].get_action()){
-            switch (a) {
-              case 'u':{
-                next_state=this->world[column-1][row];
-                this->world[column][row].set_value(std::max(this->world[column][row].get_value(), this->world[column][row].get_reward()[next_state.get_state_number()]+this->world[column][row].get_discount()*next_state.get_value()));
-              }
-              break;
-              case 'd':{
-                next_state=this->world[column+1][row];
-                this->world[column][row].set_value(std::max(this->world[column][row].get_value(), this->world[column][row].get_reward()[next_state.get_state_number()]+this->world[column][row].get_discount()*next_state.get_value()));
-              }
-              break;
-              case 'l':{
-                next_state=this->world[column][row-1];
-                this->world[column][row].set_value(std::max(this->world[column][row].get_value(), this->world[column][row].get_reward()[next_state.get_state_number()]+this->world[column][row].get_discount()*next_state.get_value()));
-              }
-              break;
-              case 'r':{
-                next_state=this->world[column][row+1];
-                this->world[column][row].set_value(std::max(this->world[column][row].get_value(), this->world[column][row].get_reward()[next_state.get_state_number()]+this->world[column][row].get_discount()*next_state.get_value()));
-              }
-              break;
-              default:{
-              }
-              break;
+        state next_state;
+        for(char a: this->world[column][row].get_action()){
+          switch (a) {
+            case 'u':{
+              next_state=this->world[column-1][row];
+              this->world[column][row].set_value(std::max(this->world[column][row].get_value(), this->world[column][row].get_reward()[next_state.get_state_number()]+this->world[column][row].get_discount()*next_state.get_value()));
             }
+            break;
+            case 'd':{
+              next_state=this->world[column+1][row];
+              this->world[column][row].set_value(std::max(this->world[column][row].get_value(), this->world[column][row].get_reward()[next_state.get_state_number()]+this->world[column][row].get_discount()*next_state.get_value()));
+            }
+            break;
+            case 'l':{
+              next_state=this->world[column][row-1];
+              this->world[column][row].set_value(std::max(this->world[column][row].get_value(), this->world[column][row].get_reward()[next_state.get_state_number()]+this->world[column][row].get_discount()*next_state.get_value()));
+            }
+            break;
+            case 'r':{
+              next_state=this->world[column][row+1];
+              this->world[column][row].set_value(std::max(this->world[column][row].get_value(), this->world[column][row].get_reward()[next_state.get_state_number()]+this->world[column][row].get_discount()*next_state.get_value()));
+            }
+            break;
+            default:{
+            }
+            break;
           }
         }
       }
     }
-    g.world = temp;
+    g.world=temp.world;
+    temp.world=this->world;
   }
+  this->write_optimal();
 }
 
 void grid::write_optimal() {
@@ -98,4 +98,6 @@ void grid::write_optimal() {
 }
 
 std::vector<state> grid::optimal_policy(state s){
+  std::vector<state> v;
+  return v;
 }
