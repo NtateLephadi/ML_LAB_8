@@ -85,7 +85,7 @@ void grid::fill_grid() {
 
 void grid::write_optimal() {
   /* code */
-  std::ofstream ofs ("ml_lab_8");
+  std::ofstream ofs ("question1");
   for (size_t column = 0; column < 2; column++) {
     /* code */
     for (size_t row = 0; row < 3; row++) {
@@ -95,4 +95,7 @@ void grid::write_optimal() {
     ofs << '\n';
   }
   ofs.close();
+}
+
+std::vector<state> grid::optimal_policy(state s){
 }
