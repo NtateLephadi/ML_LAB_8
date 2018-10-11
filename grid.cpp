@@ -11,45 +11,66 @@ void grid::to_string(){
     /* code */
     for (size_t j = 0; j < this->world[i].size(); j++) {
       /* code */
-      this->world[i][j].to_string();
+      std::cout << this->world[i][j].get_value() << " | ";
     }
+    std::cout << '\n';
   }
 }
 
-void grid::fill_grid() {
-  /* code */
+bool grid::converge(grid lhs){
   for (size_t column = 0; column < this->world.size(); column++) {
     /* code */
     for (size_t row = 0; row < this->world[column].size(); row++) {
       /* code */
-      auto s = this->world[column][row];
-      for(char a: s.get_action()){
-        switch (a) {
-          case 'u':{
-            auto s_next=this->world[column+1][row];
-            s.set_value(std::max(s.get_value(), (s.get_reward()[s_next.get_state_number()]+s.get_discount()*s_next.get_value())));
+      if (this->world[column][row].get_value()!=lhs.world[column][row].get_value()) {
+        /* code */
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+void grid::fill_grid() {
+  /* code */
+  for (size_t i = 0; i < 3; i++) {
+    /* code */
+    for (size_t column = 0; column < this->world.size(); column++) {
+      /* code */
+      for (size_t row = 0; row < this->world[column].size(); row++) {
+        /* code */
+        state s = this->world[column][row];
+        state next_state;
+        for(char a: s.get_action()){
+          switch (a) {
+            case 'u':{
+              next_state=this->world[column-1][row];
+              s.set_value(std::max(s.get_value(), s.get_reward()[next_state.get_state_number()]+s.get_discount()*next_state.get_value()));
+              std::cout << s.get_value() << '\n';
+            }
+            break;
+            case 'd':{
+              next_state=this->world[column+1][row];
+              s.set_value(std::max(s.get_value(), s.get_reward()[next_state.get_state_number()]+s.get_discount()*next_state.get_value()));
+            }
+            break;
+            case 'l':{
+              next_state=this->world[column][row-1];
+              s.set_value(std::max(s.get_value(), s.get_reward()[next_state.get_state_number()]+s.get_discount()*next_state.get_value()));
+            }
+            break;
+            case 'r':{
+              next_state=this->world[column][row+1];
+              s.set_value(std::max(s.get_value(), s.get_reward()[next_state.get_state_number()]+s.get_discount()*next_state.get_value()));
+            }
+            break;
+            default:{
+            }
+            break;
           }
-          break;
-          case 'd':{
-            auto s_next=this->world[column-1][row];
-            s.set_value(std::max(s.get_value(), (s.get_reward()[s_next.get_state_number()]+s.get_discount()*s_next.get_value())));
-          }
-          break;
-          case 'l':{
-            auto s_next=this->world[column][row-1];
-            s.set_value(std::max(s.get_value(), (s.get_reward()[s_next.get_state_number()]+s.get_discount()*s_next.get_value())));
-          }
-          break;
-          case 'r':{
-            auto s_next=this->world[column][row+1];
-            s.set_value(std::max(s.get_value(), (s.get_reward()[s_next.get_state_number()]+s.get_discount()*s_next.get_value())));
-          }
-          break;
-          default:{
-          }
-          break;
         }
       }
     }
+    this->to_string();
   }
 }

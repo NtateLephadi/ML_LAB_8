@@ -14,5 +14,6 @@ class grid{
       grid(std::vector<std::vector<state>>);
       void to_string();
       void fill_grid();
+      bool converge(grid);
 };
 #endif
