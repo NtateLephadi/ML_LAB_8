@@ -83,7 +83,7 @@ void grid::fill_grid() {
   }
 }
 
-void grid::write_optimal(std::string filename) {
+void grid::write_optimal() {
   /* code */
   std::ofstream ofs ("ml_lab_8");
   for (size_t column = 0; column < 2; column++) {

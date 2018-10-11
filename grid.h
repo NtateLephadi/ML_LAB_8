@@ -16,6 +16,6 @@ class grid{
       void to_string();
       void fill_grid();
       bool converge(grid);
-      void write_optimal(std::string);
+      void write_optimal();
 };
 #endif
