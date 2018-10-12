@@ -16,7 +16,7 @@ class grid{
       void to_string();
       void fill_grid();
       bool converge(grid);
-      void write_optimal();
+      void write_optimal(int);
       std::vector<state> optimal_policy(state);
       state optimal_state(std::vector<state>);
       void write_optimal_policy(std::vector<state>);

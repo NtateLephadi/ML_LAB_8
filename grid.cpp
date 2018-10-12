@@ -1,8 +1,7 @@
 #include "grid.h"
 #include <algorithm>    // std::max
 #include <fstream>
-
-
+#include "float.h"
 
 grid::grid(){}
 grid::~grid(){}
@@ -41,6 +40,7 @@ void grid::fill_grid() {
   s.set_value(1.0);
   g.world={{s,s,s},{s,s,s}};
   temp.world=g.world;
+  int iteration = 0;
   while (this->converge(g)==0) {
     /* code */
     for (size_t column = 0; column < this->world.size(); column++) {
@@ -79,11 +79,12 @@ void grid::fill_grid() {
     }
     g.world=temp.world;
     temp.world=this->world;
+    iteration++;
   }
-  this->write_optimal();
+  this->write_optimal(iteration);
 }
 
-void grid::write_optimal() {
+void grid::write_optimal(int i) {
   /* code */
   std::ofstream ofs ("question1");
   for (size_t column = 0; column < 2; column++) {
@@ -94,6 +95,8 @@ void grid::write_optimal() {
     }
     ofs << '\n';
   }
+  ofs << '\n';
+  ofs << "iterations: " << i;
   ofs.close();
 }
 
@@ -101,11 +104,12 @@ std::vector<state> grid::optimal_policy(state s){
   std::vector<state> states, optimal_states;
   state next_state;
   optimal_states.push_back(s);
+  this->world[0][2].set_value(FLT_MAX);
   for (size_t column = 0; column < this->world.size(); column++) {
     /* code */
     for (size_t row = 0; row < this->world[column].size(); row++) {
       /* code */
-      if (s.get_value()==this->world[column][row].get_value()) {
+      if (s.get_state_number()==this->world[column][row].get_state_number()) {
         /* code */
         while (s.get_state_number()!=3) {
           /* code */
@@ -131,16 +135,20 @@ std::vector<state> grid::optimal_policy(state s){
                 states.push_back(next_state);
               }
               break;
+              case 'i':{
+                next_state=this->world[column][row];
+                states.push_back(next_state);
+              }
+              break;
               default:{
-
               }
               break;
             }
-            std::cout << "/* message */" << '\n';
           }
           s=optimal_state(states);
           optimal_states.push_back(s);
-          states.clear();
+          states.erase(states.begin(), states.end());
+          s.to_string();
         }
       }
     }

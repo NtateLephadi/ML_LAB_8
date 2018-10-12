@@ -1,0 +1,5 @@
+Reference:
+"https://www.cs.cmu.edu/~tom/10701_sp11/hw/6/hw6_sol.pdf"
+
+Yes. Double each immediate reward. Then V∗ is also doubled and π∗remains
+unchanged.
